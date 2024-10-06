@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>whisper</title>
+</head>
+
+<body>
+    <div class="card" id="card">
+        <div class="imgBox">
+            <div class="bark"></div>
+            <img src="images/newdawg.png" width="298px" height="500px" alt="Cute dog" id="bookImage">
+        </div>
+        <div class="details" id="text-container">
+            <p class="color2">HI!!!,</p>
+            <p>First of all, thank you so much for opening this website, and for taking the time to read this message...</p>
+            <p>I think now is the right time to say this to you, Chel.</p>
+            <p>Honestly, I don’t want to make things awkward or anything, but I feel like it’s important to be upfront about my feelings. I have feelings for you, Chel, more than just as a friend. Maybe this surprises you, or maybe you’ve already picked up on it, but I’ve been keeping this to myself for a while now. And to be honest, I can’t keep pretending like there’s nothing going on between us.</p>
+            <p>I don’t want this to put any pressure on you. Whatever your response may be, I’ll respect it. For me, the most important thing is that you know how I truly feel, because this means a lot to me. I really value you, Chel, and I feel it’s necessary to express this before it’s too late. I don’t want to regret not saying anything.</p>
+            <p>Sorry I’m only saying this now, but there were a lot of things I had to think through first. Plus, I’ve got my own reasons that I can’t really explain right now. Not because I don’t trust you, but because some things are just better kept for the right moment.</p>
+            <p>I know this might feel sudden, or maybe it’ll even shock you. But I feel like this is the right time for me to be honest with you, before everything changes. We’re near the end of school, and soon we’ll graduate. I don’t want to leave something this important unsaid.</p>
+            <p>I’m also sorry for not having the courage to say this earlier. I’ve been overthinking, weighing things out too much, and honestly, I’m scared this might ruin what we already have. But on the other hand, I’m also scared that if I don’t say anything, I’ll regret it later. So whatever happens next, I’m ready for it.</p>
+            <p>And one more thing… I really hope that one day, you’ll be able to trust me, Chel...</p>
+            <p>Even though this is kinda an unusual way to confess, like making a website, hehe, at least I can get everything off my chest without making things super awkward right away. Hehe, sorry if this website isn’t perfect, and sorry if there’s anything in here that made you uncomfortable.</p>
+        </div>
+    </div>
+
+    <script>
+        let alertShown = false; // Flag to track if the first alert has been shown
+        let secondAlertShown = false; // Flag to track if the second alert has been shown
+
+        // Set the opacity of the text container to 0 initially (hidden)
+        document.getElementById("text-container").style.opacity = 0;
+
+        // Show the first alert message only once
+        if (!alertShown) {
+            alert("Hey, to read this message, I'd suggest using a laptop!");
+            alertShown = true; // Update the flag to true
+        }
+
+        // Show the second alert message after 2 seconds
+        setTimeout(function () {
+            if (!secondAlertShown) {
+                alert(" If your browser or phone is in dark mode, could you switch to light mode for a bit so you can read the text? Thanks!");
+                secondAlertShown = true; // Update the flag to true
+            }
+        }, 2000);
+
+        // Show the text after 4 seconds
+        setTimeout(function () {
+            document.getElementById("text-container").style.opacity = 1;
+        }, 4000);
+
+        // Hide the text when the mouse leaves (book closes)
+        const card = document.getElementById("card");
+
+        card.addEventListener("mouseleave", function () {
+            document.getElementById("text-container").style.opacity = 0;
+        });
+
+        card.addEventListener("mouseenter", function () {
+            setTimeout(function () {
+                document.getElementById("text-container").style.opacity = 1;
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
