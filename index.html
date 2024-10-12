@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <title>whisper</title>
+</head>
+<body>
+    <div class="main">
+        <div class="dog">
+            <div class="dog__paws">
+                <div class="dog__bl-leg leg">
+                    <div class="dog__bl-paw paw"></div>
+                    <div class="dog__bl-top top"></div>
+                </div>
+                <div class="dog__fl-leg leg">
+                    <div class="dog__fl-paw paw"></div>
+                    <div class="dog__fl-top top"></div>
+                </div>
+                <div class="dog__fr-leg leg">
+                    <div class="dog__fr-paw paw"></div>
+                    <div class="dog__fr-top top"></div>
+                </div>
+            </div>
+            <div class="dog__body">
+                <div class="dog__tail"></div>
+            </div>
+            <div class="dog__head">
+                <div class="dog__snout">
+                    <div class="dog__nose"></div>
+                    <div class="dog__eyes">
+                        <div class="dog__eye-l"></div>
+                        <div class="dog__eye-r"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="dog__head-c">
+                <div class="dog__ear-l"></div>
+                <div class="dog__ear-r"></div>
+            </div>
+            <script src="dog.js"></script>
+        </div>
+    </div>
+
+    <!-- Tombol NEXT untuk pindah ke halaman index2.html -->
+    <button id="nextButton">
+        <span>NEXT</span>
+    </button>
+
+    <script>
+        // Event listener untuk tombol
+        document.getElementById('nextButton').addEventListener('click', function() {
+            window.location.href = 'index2.html'; // Path untuk pindah ke halaman index2.html
+        });
+    </script>
+
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        } else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+</html>
